@@ -1,0 +1,6 @@
+# Default Docker Compose configuration
+
+networks:
+  internal_nw:
+    driver: bridge
+    internal: true
