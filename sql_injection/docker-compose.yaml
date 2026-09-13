@@ -1,0 +1,22 @@
+include:
+  - ../config/docker-compose.default.yaml
+
+services:
+  app:
+    build:
+      context: ./app
+    environment:
+      DATABASE_PATH: /data/app.db
+    volumes:
+      - db_data:/data
+    networks:
+      - internal_nw
+
+  attacker:
+    image: curlimages/curl:latest
+    command: ["sleep", "infinity"]
+    networks:
+      - internal_nw
+
+volumes:
+  db_data:
